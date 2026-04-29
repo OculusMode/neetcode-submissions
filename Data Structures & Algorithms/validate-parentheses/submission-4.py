@@ -1,0 +1,22 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        open_brakets = {'(', '{', '['}
+        close_brakets = {
+            ')': '(',
+            '}': '{',
+            ']': '[',
+        }
+        st = []
+        for i in s:
+            if i in open_brakets:
+                st.append(i)
+            else:
+                if not st:
+                    return False
+                braket = st.pop()
+                print(braket, close_brakets[i])
+                if braket != close_brakets[i]:
+                    return False
+        if st:
+            return False
+        return True
